@@ -1,7 +1,14 @@
 #!/bin/sh
 
 # migrate database
-/venv/bin/subunit2sql-db-manage --config-file ../etc/subunit2sql.conf upgrade head
+/venv/bin/subunit2sql-db-manage --config-file /app/etc/subunit2sql.conf upgrade head
 
 # load data
-# /venv/bin/subunit2sql --config-file ../etc/subunit2sql.conf <subunit_files>
+for f in /data/* :
+do
+    if [ -f ${f} ]; then
+        cat ${f} | /venv/bin/subunit-1to2 > ${f}.v2
+        rm ${f}
+    fi
+done
+/venv/bin/subunit2sql --config-file /app/etc/subunit2sql.conf /data/*
