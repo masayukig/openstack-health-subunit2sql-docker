@@ -24,4 +24,4 @@ How to use
 
 You can specify the listen port like below::
 
-  $ docker run -d --rm masayukig/openstack-health-subunit2sql
+  $ docker run -d -v ./data:/data --rm masayukig/openstack-health-subunit2sql
