@@ -6,7 +6,7 @@
 # load data
 for f in /data/* :
 do
-    mkdir /data/org
+    mkdir -p /data/org
     if [ -f ${f} ]; then
         cat ${f} | /venv/bin/subunit-1to2 > ${f}.v2
         mv ${f} /data/org/
