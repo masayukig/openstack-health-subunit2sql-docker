@@ -6,10 +6,10 @@
 # load data
 for f in /data/* :
 do
+    mkdir /data/org
     if [ -f ${f} ]; then
-        # FIXME: This is very nasty code...
         cat ${f} | /venv/bin/subunit-1to2 > ${f}.v2
-        rm ${f}
+        mv ${f} /data/org/
     fi
 done
 /venv/bin/subunit2sql --config-file /app/etc/subunit2sql.conf /data/*
