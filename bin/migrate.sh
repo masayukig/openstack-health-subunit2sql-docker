@@ -11,7 +11,7 @@ do
     if [ -f ${f} ]; then
         cat ${f} | /venv/bin/subunit-1to2 > ${f}.v2
         mv ${f} /data/bak/v1/
-        /venv/bin/subunit2sql --config-file /app/etc/subunit2sql.conf ${f}.v2
+        /venv/bin/subunit2sql --config-file /app/etc/subunit2sql.conf --run_meta "project:tempest" ${f}.v2
         mv ${f}.v2 /data/bak/v2/
     fi
 done
